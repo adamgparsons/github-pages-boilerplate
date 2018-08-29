@@ -51,8 +51,14 @@ $ npm install
 When it's done installing, you can start developing by running:  
 
 ```shell
-$ npm run serve-docs
+$ gulp default
 ```
+To build the project in the (`docs/`) folder from the source files:  
+
+```shell
+$ gulp build
+```
+
 This command will build a local version of our Jekyll project from the source files into a temporary folder (`_site/`). 
 
 > [http://localhost:3000](http://localhost:3000)
