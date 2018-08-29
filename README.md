@@ -26,68 +26,31 @@ A step by step series of examples that tell you how to get a development env run
 
 Say what the step will be
 
-```
-Give the example
-```
+### <a name="start"></a>Quick start  
+#### 1. Get the latest version  
+[Download](https://github.com/btomy/ca-designsystem.git "Download .zip") or clone the latest version of this boilerplate on your local machine by running:
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
+```shell
+$ git clone git@github.com:btomy/ca-designsystem.git   
+$ cd ca-designsystem
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
+#### 2. Install dependencies
+Install our project dependencies and developer tools listed in `package.json`
+```shell
+$ npm install 
 ```
 
-## Deployment
+```shell
+$ bundle install 
+```
 
-Add additional notes about how to deploy this on a live system
+#### 3. Start developing
+When it's done installing, you can start developing by running:  
 
-## Built With
+```shell
+$ npm run serve-docs
+```
+This command will build a local version of our Jekyll project from the source files into a temporary folder (`_site/`). 
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+> [http://localhost:4000](http://localhost:4000)
