@@ -20,6 +20,10 @@ or
 ```shell
 $ brew install node
 ```
+### [Gulp](https://gulpjs.com/) 
+```shell
+$ sudo npm install gulp -g
+```
 
 ### Installing
 
@@ -32,8 +36,8 @@ Say what the step will be
 [Download](https://github.com/btomy/ca-designsystem.git "Download .zip") or clone the latest version of this boilerplate on your local machine by running:
 
 ```shell
-$ git clone git@github.com:btomy/ca-designsystem.git   
-$ cd ca-designsystem
+$ git clone git@github.com:adamgparsons/github-pages-boilerplate.git
+$ cd github-pages-boilerplate
 ```
 
 #### 2. Install dependencies
@@ -42,9 +46,6 @@ Install our project dependencies and developer tools listed in `package.json`
 $ npm install 
 ```
 
-```shell
-$ bundle install 
-```
 
 #### 3. Start developing
 When it's done installing, you can start developing by running:  
@@ -54,4 +55,4 @@ $ npm run serve-docs
 ```
 This command will build a local version of our Jekyll project from the source files into a temporary folder (`_site/`). 
 
-> [http://localhost:4000](http://localhost:4000)
+> [http://localhost:3000](http://localhost:3000)
