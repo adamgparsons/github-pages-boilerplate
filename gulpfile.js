@@ -1,11 +1,18 @@
-var gulp = require('gulp');
-// Requires the gulp-sass plugin
-var sass = require('gulp-sass');
-//Requires browserSync plugin
-var browserSync = require('browser-sync').create();
+var gulp = require('gulp'),
+  // Requires the gulp-sass plugin
+  sass = require('gulp-sass'),
+  // Requires browserSync plugin
+  browserSync = require('browser-sync').create(),
+  // Requires gulp-concat concatenation plugin
+  concat = require('gulp-concat'),
+  // Requires run sequnce to make tasks run in a particluar order
+  runSequence = require('run-sequence');
+  // Requires imagemin for image minification
+  imagemin = require('gulp-imagemin');
 
+//Gulp task to convert scss into css file in app/css
 gulp.task('sass', function() {
-  return gulp.src('app/scss/**/*.scss') // Gets all files ending with .scss in app/scss
+  return gulp.src('app/scss/styles.scss')
     .pipe(sass())
     .pipe(gulp.dest('app/css'))
     .pipe(browserSync.reload({
@@ -13,13 +20,41 @@ gulp.task('sass', function() {
     }))
 });
 
-gulp.task('watch', ['browserSync', 'sass'], function (){
-  gulp.watch('app/scss/**/*.scss', ['sass']);
-  // Reloads the browser whenever HTML or JS files change
- gulp.watch('app/*.html', browserSync.reload);
- gulp.watch('app/js/**/*.js', browserSync.reload);
+//Copies styles.css from app to docs folder
+gulp.task('copy-styles-css', function() {
+  gulp.src('app/css/styles.css')
+    // Perform minification tasks, etc here
+    .pipe(gulp.dest('./docs/css'));
 });
 
+//Copy html files from app to docs folder
+gulp.task('copy-html', function() {
+  gulp.src('app/*.html')
+    // Perform minification tasks, etc here
+    .pipe(gulp.dest('./docs'));
+});
+
+//Copy font files from app to docs folder
+gulp.task('copy-fonts', function() {
+  return gulp.src('app/fonts/**/*')
+  .pipe(gulp.dest('docs/fonts'))
+})
+
+//Optimises images then copies to docs folder
+gulp.task('copy-images', function(){
+  return gulp.src('app/images/**/*.+(png|jpg|gif|svg)')
+  .pipe(imagemin())
+  .pipe(gulp.dest('docs/images'))
+});
+
+//Task to watch for changes to sass, html and js in the app folder
+gulp.task('watch', ['browserSync', 'sass'], function() {
+gulp.watch('app/scss/*.scss', ['sass']);
+
+// Reloads the browser whenever HTML or JS files change
+gulp.watch('app/*.html', browserSync.reload);
+gulp.watch('app/js/**/*.js', browserSync.reload);
+});
 gulp.task('browserSync', function() {
   browserSync.init({
     server: {
@@ -28,15 +63,16 @@ gulp.task('browserSync', function() {
   })
 })
 
-//Copy index.html from app to docs holder
-gulp.task('copy-index-html', function() {
-    gulp.src('app/index.html')
-    // Perform minification tasks, etc here
-    .pipe(gulp.dest('./docs'));
+// Compiles sass and watches for changes to CSS, HTML, JS
+gulp.task('default', function(callback) {
+  runSequence('sass', ['watch'],
+    callback
+  )
 });
 
-gulp.task('copy-styles-css', function() {
-    gulp.src('app/css/styles.css')
-    // Perform minification tasks, etc here
-    .pipe(gulp.dest('./docs/css'));
+//Copies Fonts, images, CSS and HTML files into the docs folder
+gulp.task('build', function(callback) {
+  runSequence('sass', ['copy-styles-css'], ['copy-html'], ['copy-fonts'], ['copy-images'],
+    callback
+  )
 });
