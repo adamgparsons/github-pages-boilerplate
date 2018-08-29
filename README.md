@@ -11,11 +11,14 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+We recommend using [Homebrew](http://brew.sh/ "Homebrew")
 
-```
-Give examples
-```
+### [Node.js](https://nodejs.org/en/ "Node.js") 
+
+or 
+
+```shell
+$ brew install node
 
 ### Installing
 
