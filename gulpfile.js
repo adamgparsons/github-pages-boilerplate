@@ -49,7 +49,7 @@ gulp.task('copy-images', function(){
 
 //Task to watch for changes to sass, html and js in the app folder
 gulp.task('watch', ['browserSync', 'sass'], function() {
-gulp.watch('app/scss/*.scss', ['sass']);
+gulp.watch('app/scss/**/*.scss', ['sass']);
 
 // Reloads the browser whenever HTML or JS files change
 gulp.watch('app/*.html', browserSync.reload);
