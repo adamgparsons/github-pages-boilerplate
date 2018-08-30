@@ -59,6 +59,4 @@ To build the project in the (`docs/`) folder from the source files:
 $ gulp build
 ```
 
-This command will build a local version of our Jekyll project from the source files into a temporary folder (`_site/`). 
-
 > [http://localhost:3000](http://localhost:3000)
